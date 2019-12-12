@@ -21,6 +21,7 @@
 # these rules might exclude image files for figures etc.
 # *.ps
 # *.eps
+/report/ML_Working_Paper.pdf
 /presentation/presentation.pdf
 /report/MLB_Paper.pdf
 /report/.DS_Store
