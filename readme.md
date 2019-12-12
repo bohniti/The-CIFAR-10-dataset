@@ -1,4 +1,9 @@
-# Cifar10 Group Project in Machine Learning
+<div style="border-bottom:none;">
+  <div align="center"> 
+    <img style="border-bottom:none;" src="https://github.com/Mavengence/Kaggle-Seattle-Airbnb-Analysis/blob/dev/report/photo/0_cityu.png">
+    <h1>Cifar10 Group Project in Machine Learning</h1>
+  </div>
+</div>
 
 ## Abstract
 
