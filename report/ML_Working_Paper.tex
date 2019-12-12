@@ -62,7 +62,16 @@ Acc(f,D) = \frac{1}{m}\sum_{m}^{i=1} \mathbb{I} \left [ y^{(i)} =f(x^{()i)})\rig
 \section{Technical Details}
 \subsection{Preprocessing}
 \subsubsection{Data Augmentation}
-\subsubsection{Z Scoring}
+Data augmentation describes the method of creating new data points by transforming the original data. If we look at images, this can be done for example by resizing, rotating, shifting, flipping and more.
+With this process we can artificially increase the amount of data, eventhough we have limited access to only 50000 training data. 
+This leads to a improved performance for our VGG model. \\
+We use the \textit{ImageDataGenerator class} built-in function from Keras itself to perform this transformations.
+
+\subsubsection{Normalization}
+The goal of normalization is to make every datapoint have the same scale so each feature is equally important. There are many possible ways to scale data e.g. MinMax-Scaling or Z-Score and all of them follow certain purposes. 
+The MinMax-Scaling suffers from the so called \textit{outlier issue}.
+We decided to choose the Z-Scoring, because the Z-score normalization is a strategy of normalizing data that avoids this outlier issue \cite{RN6}.  
+
 \subsubsection{Categorical Output}
 \subsection{Model}
 \subsubsection{Convolutional Layers}
