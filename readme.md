@@ -1,3 +1,10 @@
+<div style="border-bottom:none;">
+<div align="center"> 
+<img style="border-bottom:none;" src="https://github.com/bohniti/cifar-10/edit/master/report/photo/0_cityu.png">
+<h1 style="border-bottom:none;">Cifar 10<h1>
+</div>
+</div>
+
 # Cifar10 Group Project in Machine Learning
 
 ## Abstract
