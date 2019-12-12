@@ -1,0 +1,60 @@
+\documentclass[journal]{IEEEtran}
+\renewcommand\thesection{\arabic{section}} 
+\renewcommand\thesubsectiondis{\thesection.\arabic{subsection}}
+\renewcommand\thesubsubsectiondis{\thesubsectiondis.\alph{subsubsection}}
+\renewcommand\theparagraphdis{\arabic{paragraph}.}
+\usepackage{xcolor,soul,framed} %,caption
+\colorlet{shadecolor}{yellow}
+\usepackage[pdftex]{graphicx}
+\graphicspath{{../pdf/}{../jpeg/}}
+\DeclareGraphicsExtensions{.pdf,.jpeg,.png}
+\usepackage[cmex10]{amsmath}
+\usepackage{array}
+\usepackage{mdwmath}
+\usepackage{mdwtab}
+\usepackage{eqparbox}
+\usepackage{url}
+\hyphenation{op-tical net-works semi-conduc-tor}
+\usepackage{graphicx}
+%=== TITLE & AUTHORS ====================================================================
+\begin{document}
+\bstctlcite{IEEEexample:BSTcontrol}
+    \title{\includegraphics[width=2.5in]{photo/0_cityu} \\
+     How can the effectiveness of marketing \\ be improved ‘Airbnb Seattle’? \\ 
+     \textit{Dataset of 2016}
+     }
+  \author{LIST Nicole ,
+      L\"OHR Tim,
+      BOHNSTEDT Timo,\\
+      PANG Tsz Ching 
+      and BAL Kiran Jeniffer% \\ <-this % stops a space
+}
+\markboth{Project Report
+Machine Learning for Business IS4861 
+}{Roberg \MakeLowercase{\textit{et al.}}}
+% ====================================================================
+\maketitle
+% === ABSTRACT 
+\begin{abstract}
+%\boldmath
+Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam ac enim vulputate ipsum pellentesque bibendum imperdiet id nibh. Mauris non varius odio. Pellentesque eu libero porta, porttitor lectus ut, dictum neque. Curabitur maximus, justo non faucibus tristique, tellus turpis ornare elit, et sagittis dui justo convallis ex. Pellentesque a libero dui. In vel lobortis nunc. dui. Vivamus congue nulla.
+\end{abstract}
+% === KEYWORDS 
+\begin{IEEEkeywords}
+\hl{kaggle, machine learning, business, data analytics, airbnb}
+\end{IEEEkeywords}
+\IEEEpeerreviewmaketitle
+% === I. Project background and motivation
+\section{Project background and motivation}
+\noindent \begin{itshape}"Brian, I thought of a way to make a few bucks - turning our place into "designers bed and breakfast" - offering young designers who come to town a place to cra during the 4 day event, complete with wireless Internet, a small desk space, sleeping mat, and breakfast each morning. Ha Joe! \\
+\end{itshape}
+\IEEEPARstart{T}{}behavior by analyzing the requirements of past visitors 
+Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam ac enim vulputate ipsum pellentesque bibendum imperdiet id nibh. Mauris non varius odio. Pellentesque eu libero porta, porttitor lectus ut, dictum neque. Curabitur maximus, justo non faucibus tristique, tellus turpis ornare elit, et sagittis dui justo convallis ex. Pellentesque a libero dui. In vel lobortis nunc. Sed pulvinar ex sed ultricies laoreet. Ut dictum purus non rutrum gravida. Etiam in justo condimentum leo posuere pretium ut sed ex. Nam non ultricies lectus. Vestibulum rutrum dui sit amet ligula cursus, ac posuere nunc mollis. Sed maximus aliquet tristique. Vestibulum eu egestas augue. Aliquam purus purus, vulputate in ultrices quis, consequat vel nulla. Vestibulum faucibus augue nec nibh posuere, quis bibendum nibh ullamcorper.\\\\Proin scelerisque odio dolor, id volutpat lacus hendrerit nec. Nam sit amet consectetur libero. Mauris semper maximus dui, vitae maximus neque rutrum et. Integer odio arcu, porta quis consectetur non, consequat non ex. Donec commodo varius odio. Pellentesque facilisis diam et pretium sollicitudin. Nam fringilla nisi in est accumsan accumsan. Phasellus erat metus, sollicitudin quis dolor vitae, ullamcorper molestie urna. Nulla faucibus lacus nibh, eget fermentum enim luctus sit amet.\\\\In rhoncus ligula vel magna malesuada iaculis. Donec hendrerit non ipsum ac tempus. Praesent sit amet aliquam lacus. Fusce vulputate tempor lacus, eget fermentum ex laoreet id. Morbi congue cursus ligula ut pretium. Sed quis velit quis justo elementum tincidunt nec nec mauris. Aliquam sed ipsum non lorem placerat vestibulum quis sed arcu. Mauris eu lorem dui. Vivamus congue nulla.
+% ============================================
+\ifCLASSOPTIONcaptionsoff
+  \newpage
+\fi
+\bibliographystyle{IEEEtran}
+\bibliography{IEEEabrv,Bibliography}
+\vfill
+\end{document}
