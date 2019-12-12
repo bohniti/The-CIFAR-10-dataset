@@ -1,6 +1,6 @@
 <div style="border-bottom:none;">
   <div align="center"> 
-    <img style="border-bottom:none;" src="https://github.com/bohniti/cifar-10/edit/master/report/photo/0_cityu.png">
+    <img style="border-bottom:none;" src="https://github.com/Mavengence/Kaggle-Seattle-Airbnb-Analysis/blob/dev/report/photo/0_cityu.png">
   </div>
 </div>
 
