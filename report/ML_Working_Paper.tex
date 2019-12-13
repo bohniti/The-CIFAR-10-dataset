@@ -75,11 +75,24 @@ The MinMax-Scaling suffers from the so called \textit{outlier issue}.
 We decided to choose the Z-Scoring, because the Z-score normalization is a strategy of normalizing data that avoids this outlier issue \cite{RN6}.  
 
 \subsubsection{Categorical Output}
+As the name of CIFAR10 already implies, does this dataset contain of ten different classes. There are ten different animals given by the creators of this dataset. To predict one of those animals with the trained model, the model outputs ten different values, each represents the probability of being one of the animals respectively. 
+We convert the aranged numbers from one to ten 50000, 1) into a binary output class matrix (50000, 10). Each row in this matrix values one for the desired animal. E.g. animal number three will be transformed into [0 0 1 0 0 0 0 0 0 0].
+If we didn't convert our labels into this format, we could not resolve back the probability for each animal and would lose information to improve. 
+
 \subsection{Model}
 \subsubsection{Convolutional Layers}
 \subsubsection{Kernel Regularization}
+In our project we use two different regularizers.
 \subsubsection{Batch Normalization}
 \subsubsection{Activation Functions}
+There a couple of widely used activation functions like tanh, sigmoid function, ReLU or the ELU. For our model we decided to use the \textit{ReLU} activation function. The Rectified Linear Unit (ReLU) has become very popular in the last few years. It computes the function \(f(x)=max(0,x)\). In other words, the activation is simply thresholded at zero. There are plenty of pro's and con's for the ReLU:
+\begin{itemize}
+\item (+) Compared to tanh/sigmoid neurons that need to compute expensive operations  like the exponentials, the ReLU can be implemented by directly thresholding a matrix of activations at zero.
+\item (+) It was found to notably accelerate the convergence of stochastic gradient descent (SGD) compared to the tanh/sigmoid functions. That is, because of its linear, non-saturating form.
+\item (-) Sadly, ReLU units can be weak during training and possibly “die”. For example, a large gradient streaming through a ReLU neuron could cause the weights to update in a dead end, so that it will never activate again. If this happens, then the gradient streaming through the unit will forever be zero. The ReLU units can irreversibly die during training since they can get eliminated off the data manifold. With a good scheduling setting of the learning rate this is less likely to happen.
+\end{itemize}
+
+
 \subsubsection{Max Pooling}
 \subsubsection{Flatten}
 \subsubsection{Dense Layer}
