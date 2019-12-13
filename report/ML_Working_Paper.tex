@@ -109,13 +109,23 @@ Our compiled Keras model uses the \textit{cross-entropy-loss}.
 L_{i} = f_{y_{i}} + log \sum_{j} e^{f_{j}}
 \end{equation}
 where we are using the notation \(f_{j}\) to mean the \textit{j-th} element of the vector of class scores \textit{f}. The full loss for the dataset is the mean of \(f_{i}\) over all training examples together with a regularization term \textit{R(W)}.
-
+The cross-entropy loss, or also called log loss, measures the performance of our classification model with the output as probability values between zero and one. The cross-entropy loss increases as the predicted probability diverges from real value labels.
 \subsubsection{Optimizer}
+There are many possible optimizer suitable for our task. The common ones are the RMSprob, Adam or the stochastic gradient descent (SGD). We decided to use the SGD
+to minimize the loss by computing the gradient with respect to a randomly selected batch from the training set. This method is more efficient than computing the gradient with respect to the whole training set before each update is performed.
+\begin{equation}
+\frac{\partial p_i}{\partial a_j}=\left\{\begin{matrix} p_i(1-p_i) & if & i=j\\ -p_j p_i & if & i\neq j \end{matrix}\right.
+\end{equation} \\
+\begin{equation}
+\frac{\partial L}{\partial o_i}=p_i-y\_oh_i
+\end{equation} 
+For the derivation of the cross entropy loss, \textit{y\_oh} is the one-hot encoded representation of the class labels.
 \subsubsection{Softmax}
 The softmax normalizes the class probabilities to one and it has a probabilistic interpretation. 
 \begin{equation}
 f_{j}(z) = \frac{e^{z_{i}}}{\sum_{k} e^{z_{k}}}
 \end{equation}
+The exponential values can very quickly explode to an infinite large number, for example \(e_{1000}\). To fix this issue, it takes a one-dimensional vector of arbitrary length (in \textit{z}) and puts it into a vector of values between zero and one that sum together to one. The cross-entropy loss that includes the softmax function, hence to minimize the cross-entropy-loss between the estimated class probabilites. \\
 \subsubsection{Flatten}
 In between the convolutional layer (CNN) and the fully connected layer (Dense), there is a \textit{Flatten layer}. The Flattening layer transforms a two-dimensional matrix of features into a one-dimensional vector that can be respectively streamed into the fully connected neural network classifier, which are our ten fully connected animal neurons. \\
 %
