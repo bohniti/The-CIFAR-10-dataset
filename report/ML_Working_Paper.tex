@@ -82,7 +82,8 @@ If we didn't convert our labels into this format, we could not resolve back the 
 \subsection{Model}
 \subsubsection{Convolutional Layers}
 \subsubsection{Kernel Regularization}
-In our project we use two different regularizers.
+There are many different regularizations to prevent the neural network from overfitting. For our project we chose the \textit{L2 regularization}, because it is the most common form.
+It can be integrated by penalizing the squared magnitude of all parameters directly in the objective. So, for every weight \textit{w} in the network, the term \(\frac{1}{2} \lambda w^2\) gets added to the objective, where \(\lambda \) is the regularization strength. It's usual to see \(\frac{1}{2}\) in the front, because then the gradient of this term with respect to \textit{w} is simply \(\lambda w\) instead of \(2 \lambda w\). The L2 penalizes the peaky weight vectors and prefers the diffuse weight vectors \cite{RN4}. During the gradien descent weight update, the L2 regularization means, that every weight is decayed linearly (\textit{w += -lambda * w}) towards zero.
 \subsubsection{Batch Normalization}
 \subsubsection{Activation Functions}
 There a couple of widely used activation functions like tanh, sigmoid function, ReLU or the ELU. For our model we decided to use the \textit{ReLU} activation function. The Rectified Linear Unit (ReLU) has become very popular in the last few years. It computes the function \(f(x)=max(0,x)\). In other words, the activation is simply thresholded at zero. There are plenty of pro's and con's for the ReLU:
