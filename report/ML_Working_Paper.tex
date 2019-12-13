@@ -103,6 +103,19 @@ There a couple of widely used activation functions like tanh, sigmoid function, 
 \item (+) It was found to notably accelerate the convergence of stochastic gradient descent (SGD) compared to the tanh/sigmoid functions. That is, because of its linear, non-saturating form.
 \item (-) Sadly, ReLU units can be weak during training and possibly “die”. For example, a large gradient streaming through a ReLU neuron could cause the weights to update in a dead end, so that it will never activate again. If this happens, then the gradient streaming through the unit will forever be zero. The ReLU units can irreversibly die during training since they can get eliminated off the data manifold. With a good scheduling setting of the learning rate this is less likely to happen. \\
 \end{itemize}
+\subsubsection{Loss function}
+Our compiled Keras model uses the \textit{cross-entropy-loss}. 
+\begin{equation}
+L_{i} = f_{y_{i}} + log \sum_{j} e^{f_{j}}
+\end{equation}
+where we are using the notation \(f_{j}\) to mean the \textit{j-th} element of the vector of class scores \textit{f}. The full loss for the dataset is the mean of \(f_{i}\) over all training examples together with a regularization term \textit{R(W)}.
+
+\subsubsection{Optimizer}
+\subsubsection{Softmax}
+The softmax normalizes the class probabilities to one and it has a probabilistic interpretation. 
+\begin{equation}
+f_{j}(z) = \frac{e^{z_{i}}}{\sum_{k} e^{z_{k}}}
+\end{equation}
 \subsubsection{Flatten}
 In between the convolutional layer (CNN) and the fully connected layer (Dense), there is a \textit{Flatten layer}. The Flattening layer transforms a two-dimensional matrix of features into a one-dimensional vector that can be respectively streamed into the fully connected neural network classifier, which are our ten fully connected animal neurons. \\
 %
