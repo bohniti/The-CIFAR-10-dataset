@@ -17,7 +17,9 @@
 \usepackage{amsfonts}
 \hyphenation{op-tical net-works semi-conduc-tor}
 \usepackage{graphicx}
+%
 %=== TITLE & AUTHORS ====================================================================
+%
 \begin{document}
 \bstctlcite{IEEEexample:BSTcontrol}
     \title{\includegraphics[width=2.5in]{photo/0_cityu} \\
@@ -82,14 +84,11 @@ If we didn't convert our labels into this format, we could not resolve back the 
 
 \subsection{Model}
 To solve the image classification task, we are using a convolutional neuronal network (CNN). CNN's are a particular case of feed-forward neural networks \cite{Goodfellow-et-al-2016}. On a very fundamental level, we can say that a feed-forward neural network -as the most machine learning models - is a function. The function of a feed-forward neuronal network can simply descriped as \(y = f(x, \o )\) . CNN's and feed-forward neuronal networks are estimating parameter values. So for \(y = f(x, \o )\) we estimate the parameter \(\o \) \cite{Goodfellow-et-al-2016}. Through those estimated parameter values, we are getting a function with the smallest possible difference between the predicted output values and the defined output values. A function that measures the difference between the expected - and the defined output is a so-called loss function \cite{Goodfellow-et-al-2016}. The problem description gives already a mathematical definition \eqref{acc} from the accuracy loss function which we are using. 
-CNN's and classical feed-forward neuronal networks differ in their basis of calculation. Feed-forward neuronal networks are using matrix multiplication, whereas CNN's are using convolutions. 
-The components which are specific for a CNN are convolutional layers, pooling layers, and fully-connected layers \cite{LeCun1998}. \\
+CNN's and classical feed-forward neuronal networks differ in their basis of calculation. Feed-forward neuronal networks are using matrix multiplication, whereas CNN's are using convolutions. Convolutional layers, pooling layers, and fully-connected layers are specific for  a CNN \cite{LeCun1998}.
 \subsubsection{Convolutional Layers}
+
 \subsubsection{Pooling Layers}
-It is common to periodically add a pooling layer in-between the convolutional layers. Its function is to avoid overfitting and step by step reduce the size of the input image by reducing the amount of parameters and computations of the network. We use three pooling layers with filters of size 3x3 applied with a stride of 0 and a padding set to \textit{same}. This downsamples every depth slice in the input by 2 along both width and height, discarding 50\% of the activations. \\
 \subsubsection{Fully-Connected Layers}
-The Dense layer is the last layer of our model. It is also called the \textit{fully connected layer}. Neurons in the fully connected layer have full connections to all activations in the previous layer, as in the normal neural networks. Their activation functions will then be computed by a matrix multiplication which is followed by a bias offset. 
-For the ten different animals we repectively have ten fully connected neurons in the dense layer. \\
 \subsubsection{Kernel Regularization}
 There are many different regularizations to prevent the neural network from overfitting. For our project we chose the \textit{L2 regularization}, because it is the most common form.
 It can be integrated by penalizing the squared magnitude of all parameters directly in the objective. So, for every weight \textit{w} in the network, the term \(\frac{1}{2} \lambda w^2\) gets added to the objective, where \(\lambda \) is the regularization strength. It's usual to see \(\frac{1}{2}\) in the front, because then the gradient of this term with respect to \textit{w} is simply \(\lambda w\) instead of \(2 \lambda w\). The L2 penalizes the peaky weight vectors and prefers the diffuse weight vectors \cite{RN4}. During the gradien descent weight update, the L2 regularization means, that every weight is decayed linearly (\textit{w += -lambda * w}) towards zero. \\
@@ -103,6 +102,13 @@ There a couple of widely used activation functions like tanh, sigmoid function, 
 \item (+) It was found to notably accelerate the convergence of stochastic gradient descent (SGD) compared to the tanh/sigmoid functions. That is, because of its linear, non-saturating form.
 \item (-) Sadly, ReLU units can be weak during training and possibly “die”. For example, a large gradient streaming through a ReLU neuron could cause the weights to update in a dead end, so that it will never activate again. If this happens, then the gradient streaming through the unit will forever be zero. The ReLU units can irreversibly die during training since they can get eliminated off the data manifold. With a good scheduling setting of the learning rate this is less likely to happen. \\
 \end{itemize}
+<<<<<<< HEAD
+\subsubsection{Max Pooling}
+It is common to periodically add a pooling layer in-between the convolutional layers. Its function is to avoid overfitting and step by step reduce the size of the input image by reducing the amount of parameters and computations of the network. We use three pooling layers with filters of size 3x3 applied with a stride of 0 and a padding set to \textit{same}. This downsamples every depth slice in the input by 2 along both width and height, discarding 50\% of the activations. \\
+\subsubsection{Dense Layer}
+The Dense layer is the last layer of our model. It is also called the \textit{fully connected layer}. Neurons in the fully connected layer have full connections to all activations in the previous layer, as in the normal neural networks. Their activation functions will then be computed by a matrix multiplication which is followed by a bias offset. 
+For the ten different animals we repectively have ten fully connected neurons in the dense layer. \\
+=======
 \subsubsection{Loss function}
 Our compiled Keras model uses the \textit{cross-entropy-loss}. 
 \begin{equation}
@@ -125,7 +131,11 @@ The softmax normalizes the class probabilities to one and it has a probabilistic
 \begin{equation}
 f_{j}(z) = \frac{e^{z_{i}}}{\sum_{k} e^{z_{k}}}
 \end{equation}
+<<<<<<< HEAD
 The exponential values can very quickly explode to an infinite large number, for example \(e_{1000}\). To fix this issue, it takes a one-dimensional vector of arbitrary length (in \textit{z}) and puts it into a vector of values between zero and one that sum together to one. The cross-entropy loss that includes the softmax function, hence to minimize the cross-entropy-loss between the estimated class probabilites. \\
+=======
+>>>>>>> 3df47d7e8ef752202b330e2f586354881215fbaf
+>>>>>>> 1c657999293aecc25bcfbdfceec9aee5f6af3234
 \subsubsection{Flatten}
 In between the convolutional layer (CNN) and the fully connected layer (Dense), there is a \textit{Flatten layer}. The Flattening layer transforms a two-dimensional matrix of features into a one-dimensional vector that can be respectively streamed into the fully connected neural network classifier, which are our ten fully connected animal neurons. \\
 %
