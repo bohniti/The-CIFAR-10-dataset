@@ -51,6 +51,7 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam ac enim vulputate
 \IEEEPARstart{T}{}In our course Machine Learning at the City University of Hong Kong, Dr Kede teched us the fundamental mathematical knowledge to solve machine learning tasks. Furthermore, we improved our ability to use this knowledge while working on Jupyter Notebook Tutorials, which were provided by Dr Kede and his assistant PhD students. To proof our learning progress in the theoretical and practical field, we are going to work on a Group Project. To solve an image classification task, we use the widely used dataset "cifar10". The original dataset consists of 60000 coloured images of objects from 10 classes, with 6000 images per category. There are 50, 000 training images and 10, 000 test images. To compare our work with other groups, we are using the following evaluation criteria:
 \begin{equation}
 Acc(f,D) = \frac{1}{m}\sum_{m}^{i=1} \mathbb{I} \left [ y^{(i)} =f(x^{()i)})\right ]
+\label{acc}
 \end{equation}
 
 \noindent We can choose the Tensorflow Framework from Google and the Facebook pendant Pytorch. To have a quick start, we got two tutorials which are focusing on bothe frameworks and how to use them while solving an image classification task. Because of the broader Community and after a first evaluation based on the provided evaluation criteria, the group decided to use Tensorflow instead of Pytorch.
@@ -80,7 +81,12 @@ We convert the aranged numbers from one to ten 50000, 1) into a binary output cl
 If we didn't convert our labels into this format, we could not resolve back the probability for each animal and would lose information to improve. 
 
 \subsection{Model}
+To solve the image classification task, we are using a convolutional neuronal network (CNN). CNN's are a particular case of feed-forward neural networks \cite{Goodfellow-et-al-2016}. On a very fundamental level, we can say that a feed-forward neural network -as the most machine learning models - is a function. The function of a feed-forward neuronal network can simply descriped as \(y = f(x, \o )\) . CNN's and feed-forward neuronal networks are estimating parameter values. So for \(y = f(x, \o )\) we estimate the parameter \(\o \) \cite{Goodfellow-et-al-2016}. Through those estimated parameter values, we are getting a function with the smallest possible difference between the predicted output values and the defined output values. A function that measures the difference between the expected - and the defined output is a so-called loss function \cite{Goodfellow-et-al-2016}. The problem description gives already a mathematical definition \eqref{acc} from the accuracy loss function which we are using. 
+CNN's and classical feed-forward neuronal networks differ in their basis of calculation. Feed-forward neuronal networks are using matrix multiplication, whereas CNN's are using convolutions. 
+The components which are specific for a CNN are convolutional layers, pooling layers, and fully-connected layers \cite{LeCun1998}.
 \subsubsection{Convolutional Layers}
+\subsubsection{Pooling Layers}
+\subsubsection{Fully-Connected Layers}
 \subsubsection{Kernel Regularization}
 There are many different regularizations to prevent the neural network from overfitting. For our project we chose the \textit{L2 regularization}, because it is the most common form.
 It can be integrated by penalizing the squared magnitude of all parameters directly in the objective. So, for every weight \textit{w} in the network, the term \(\frac{1}{2} \lambda w^2\) gets added to the objective, where \(\lambda \) is the regularization strength. It's usual to see \(\frac{1}{2}\) in the front, because then the gradient of this term with respect to \textit{w} is simply \(\lambda w\) instead of \(2 \lambda w\). The L2 penalizes the peaky weight vectors and prefers the diffuse weight vectors \cite{RN4}. During the gradien descent weight update, the L2 regularization means, that every weight is decayed linearly (\textit{w += -lambda * w}) towards zero.
