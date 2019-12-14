@@ -23,7 +23,7 @@
 \begin{document}
 \bstctlcite{IEEEexample:BSTcontrol}
     \title{\includegraphics[width=2.5in]{photo/0_cityu} \\
-    Image  classification on the cifar10 dataset using Tensorflow"\\
+    Image  Classification on the CIFAR10 Dataset using Tensorflow"\\
      \textit{Working Paper for CS4487 Machine Learning}
      }
   \author{BOHNSTEDT 	Timo ,
@@ -56,11 +56,28 @@ Acc(f,D) = \frac{1}{m}\sum_{m}^{i=1} \mathbb{I} \left [ y^{(i)} =f(x^{()i)})\rig
 \label{acc}
 \end{equation}
 
-\noindent We can choose the Tensorflow Framework from Google and the Facebook pendant Pytorch. To have a quick start, we got two tutorials which are focusing on bothe frameworks and how to use them while solving an image classification task. Because of the broader Community and after a first evaluation based on the provided evaluation criteria, the group decided to use Tensorflow instead of Pytorch.
+\noindent We can choose the Tensorflow Framework from Google and the Facebook pendant Pytorch. To have a quick start, we got two tutorials which are focusing on bothe frameworks and how to use them while solving an image classification task. Because of the broader Community and after a first evaluation based on the provided evaluation criteria, the group decided to use Tensorflow instead of Pytorch. \\
+\begin{figure}
+  \begin{center}
+  \includegraphics[width=3in]{photo/image32.png}\\
+  \caption{Cifar 10 pictures}\label{cifar10}
+  \end{center}
+\end{figure}
 % === II. Literature Survey ============================
 \section{Literature Survey}
 \subsection{State of the Art analysis}
+Since the Cifar10 dataset got released in the year 2009, a lot of people have tried to further improve the accuracy on this dataset. There are every year new ground breaking solutions, which further beat the best models. At the current time \textit{2019-12-12}, this is the state-of-the-art technologie from two independent sources \cite{RN13} \cite{RN14}. \\
+\begin{figure}
+  \begin{center}
+  \includegraphics[width=4.3in]{photo/related_work.png}\\
+  \caption{State of the Art}\label{state of the art}
+  \end{center}
+\end{figure} \\
+The illustration shows that the current state-of-the-art model achieves 99\%. 
 \subsection{Open Research Fields}
+
+
+
 %
 % === III. Technical Details ============================
 %
