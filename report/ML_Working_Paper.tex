@@ -39,7 +39,7 @@ Machine Learning for Business IS4861
 % === ABSTRACT 
 \begin{abstract}
 %\boldmath
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam ac enim vulputate ipsum pellentesque bibendum imperdiet id nibh. Mauris non varius odio. Pellentesque eu libero porta, porttitor lectus ut, dictum neque. Curabitur maximus, justo non faucibus tristique, tellus turpis ornare elit, et sagittis dui justo convallis ex. Pellentesque a libero dui. In vel lobortis nunc. dui. Vivamus congue nulla.
+We try to learn how the task image classification could be solved. To work on such a task we use the cifar10 dataset.  In a detailed problem description in we pointing out all of the essential points to understand the given task and dataset. To have a broader understanding of what does research contributes to this task of image recognition, we gave a summary of the latest publications and developments around the image classification field. To solve the job with our implementation, we decided to use a VGG16 model architecture. So, we show how our architecture looks in detail and explain all its layers. In the end, we analyze the results of our implementation while using the results itself and while using the results of similar applications as a baseline. 
 \end{abstract}
 
 % === KEYWORDS 
@@ -73,6 +73,7 @@ While we could use the GPipe for parallelisation of the training task while we h
 % === III. Technical Details ============================
 %
 \section{Technical Details}
+\label{sec:techDetails}
 \subsection{Preprocessing}
 \subsubsection{Data Augmentation}
 \noindent Data augmentation describes the method of creating new data points by transforming the original data. If we look at images, this can be done for example by resizing, rotating, shifting, flipping and more.
@@ -92,8 +93,9 @@ If we didn't convert our labels into this format, we could not resolve back the 
 
 \subsection{Model}
 \noindent To solve the image classification task, we are using a convolutional neuronal network (CNN). CNN's are a particular case of feed-forward neural networks \cite{Goodfellow-et-al-2016}. On a very fundamental level, we can say that a feed-forward neural network -as the most machine learning models - is a function. The function of a feed-forward neuronal network can simply descriped as \(y = f(x, \o )\) . CNN's and feed-forward neuronal networks are estimating parameter values. So for \(y = f(x, \o )\) we estimate the parameter \(\o \) \cite{Goodfellow-et-al-2016}. Through those estimated parameter values, we are getting a function with the smallest possible difference between the predicted output values and the defined output values. A function that measures the difference between the expected - and the defined output is a so-called loss function \cite{Goodfellow-et-al-2016}. The problem description gives already a mathematical definition \eqref{acc} from the accuracy loss function which we are using. 
-CNN's and classical feed-forward neuronal networks differ in their basis of calculation. Feed-forward neuronal networks are using matrix multiplication, whereas CNN's are using convolutions. Convolutional layers, pooling layers, and fully-connected layers are specific for  a CNN \cite{LeCun1998}. \\
+CNN's and classical feed-forward neuronal networks differ in their basis of calculation. Feed-forward neuronal networks are using matrix multiplication, whereas CNN's are using convolutions. Convolutional layers, pooling layers, and fully-connected layers are specific for a CNN \cite{LeCun1998}. \\
 \subsubsection{Model Architecture}
+We decided to use the VGG16 model architecture. In 2014 an implementation of the architecture could win ILSVR(Imagenet) competition. Even if in the overall cifar10 ranking are more powerfull architectures and architecture combinations, we decided to use this classic example.  The complexity is small in comparison to  other designs which are provided in the ranking. Note that - as  mentioned in the \hyperref[sec:problemDescription]{"Problem Desciption"}, the goal of our project was not to get an outstanding result of the accuracy. The main goal was more to understand the principals behind deep learning and to get a feeling of what the state of the art (in image recognition) is. So, because the VGG16 is known as the best visualizable model architecture, we thought it would be the best choice to accomplish our goal. The model architecture is also known for getting rid of a vast amount of hyper-parameters. Instead, it is focusing on tiny filter size and a small strate. The technical details \hyperref[sec:techDetails]{"Problem Desciption"}, of the different layers are providing more details about its implementaiton. 
 \subsubsection{Convolutional Layers}
 \noindent The convolutional Layer is for extracting features from the input matrix into a feature map. For this procedure, we use matrix multiplication and a filter (feature detector, kernel) \cite{Goodfellow-et-al-2016}. In picture 9 you can see a calculation example of how convolution is applied to a matrix. We are iterating with the filter over the matrix, calculating the scalar product and writing the result into a feature map. An activation function like the rectified linear unit (Relu) normalizes the feature map after we did the convolution.  Normalization grantees a feature map which is not a linear transformation of its input value. If that would be the case we had just a linear problem what would be easily solved but with a wrong result. In other words, the input values get just multiplied by coefficients. Note that there are plenty of reasons for activation functions in a neuronal network. We are giving a closer look at this topic at our section \hyperref[sec:activationFunctions]{"Activation Functions"}. In Figure 8 you can see how our pictures had changed after applying the first convolutional layer, before and after doing normalization.  \\
 \subsubsection{Pooling Layers}
@@ -144,9 +146,9 @@ In between the convolutional layer (CNN) and the fully connected layer (Dense), 
 % === IV. Result Analysis============================
 %
 \section{Result Analysis}
-\subsection{Evaluation Criteria}
-\subsubsection{Overfitting and Generalisation}
-\subsubsection{Possible Improvements}
+As mentioned in the model architecture, is an implementation of the VGGNet still state of the art but no longer among the very best of its field. Even more, we want to point out its difficulties and significant problems. As we look at our training process, we could see two things. First, the estimated time of our epochs is around 30 Minutes. So, if we would train longer to gain a better result, our training processes would be too long. Second, our model is enormous.  A massive model in size leads to difficulties if we would consider deploying our model.\\
+Besides the difficulties we had, if we would consider improving our accuracy with the VGGNet, we could say that our model does a good job due to overfitting as you can see in Figure XYZ. This achievement is mostly because of our attempted to avoid overfitting while using a weight decay, kernel regularizer and batch normalization. 
+
 % ============================================
 \ifCLASSOPTIONcaptionsoff
   \newpage
