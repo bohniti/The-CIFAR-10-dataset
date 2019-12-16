@@ -21,6 +21,8 @@
 # these rules might exclude image files for figures etc.
 # *.ps
 # *.eps
+/models/model_92.h5
+/models/model_88.h5
 /report/ML_Working_Paper.pdf
 /presentation/presentation.pdf
 /report/MLB_Paper.pdf
