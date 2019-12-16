@@ -134,7 +134,24 @@ We decided to use the VGG16 model architecture. In 2014, an implementation of th
   \end{center}
 \end{figure}
 
-In picture \ref{featuremap} you can see a calculation example of how convolution is applied to a matrix. We are iterating with the filter over the matrix, calculating the scalar product and writing the result into a feature map. An activation function like the rectified linear unit (ReLU) normalizes the feature map after we performed the convolution. Normalization guarantees a feature map which is not a linear transformation of its input value. If this is the case, we only have a linear problem which can be easily solved, but with a wrong result. In other words, the input values get just multiplied by coefficients. Note that there are plenty of reasons for activation functions in a neuronal network. We are giving a closer look at this topic at our section \hyperref[sec:activationFunctions]{"Activation Functions"}. In Figure 8 you can see how our pictures had changed after applying the first convolutional layer, before and after doing normalization.  \\
+In picture \ref{featuremap} you can see a calculation example of how convolution is applied to a matrix. We are iterating with the filter over the matrix, calculating the scalar product and writing the result into a feature map. An activation function like the rectified linear unit (ReLU) normalizes the feature map after we performed the convolution. Normalization guarantees a feature map which is not a linear transformation of its input value. If this is the case, we only have a linear problem which can be easily solved, but with a wrong result. In other words, the input values get just multiplied by coefficients. Note that there are plenty of reasons for activation functions in a neuronal network. We are giving a closer look at this topic at our section \hyperref[sec:activationFunctions]{"Activation Functions"}. In Figure \ref{featuremap1} you can see how our pictures had changed after applying the first convolutional layer, before and after doing normalization.  \\
+
+\begin{figure}
+  \begin{center}
+  \includegraphics[width=3in]{photo/feature_map1.png}\\
+  \caption{Feature Map from CNN Layer 1}\label{featuremap1}
+  \end{center}
+\end{figure}
+
+\begin{figure}
+  \begin{center}
+  \includegraphics[width=3in]{photo/feature_map2.png}\\
+  \caption{Feature Map from CNN Layer 2}\label{featuremap2}
+  \end{center}
+\end{figure}
+
+This represents the 64 first feature maps of a random picture from the dataset. We can observe that the filters already focus on certain points on the cat's body. We further used this feature map as input for the second CNN layer. The output of the second feature map (figure \ref{featuremap2}) further sharpens the filters. For example we can see that feature map 2 until 5 focus on the cat itself, whereas map 8 puts it focus on the cats ears. \\
+
 \subsubsection{Pooling Layers}
 \noindent It is common to periodically add a pooling layer in-between the convolutional layers. Its function is to avoid overfitting and step by step reduce the size of the input image by reducing the amount of parameters and computations of the network. We use three pooling layers with filters of size 3x3 applied with a stride of 0 and a padding set to \textit{same}. This downsamples every depth slice in the input by 2 along both width and height, discarding 50\% of the activations. \\
 \subsubsection{Fully-Connected Layers}
