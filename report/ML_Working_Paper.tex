@@ -24,14 +24,14 @@
 \begin{document}
 \bstctlcite{IEEEexample:BSTcontrol}
     \title{\includegraphics[width=2.5in]{photo/0_cityu} \\
-    Image  classification on the cifar10 dataset using Tensorflow"\\
+    Image Classification on the CIFAR10 Dataset\\
      \textit{Working Paper for CS4487 Machine Learning}
      }
   \author{BOHNSTEDT 	Timo ,
       L\"OHR Tim\\ 
 }
 \markboth{Project Report
-Machine Learning for Business IS4861 
+Machine Learning CS4487 
 }{Roberg \MakeLowercase{\textit{et al.}}}
 
 % ====================================================================
@@ -39,7 +39,7 @@ Machine Learning for Business IS4861
 % === ABSTRACT 
 \begin{abstract}
 %\boldmath
-We try to learn how the task image classification could be solved. To work on such a task we use the cifar10 dataset.  In a detailed problem description in we pointing out all of the essential points to understand the given task and dataset. To have a broader understanding of what does research contributes to this task of image recognition, we gave a summary of the latest publications and developments around the image classification field. To solve the job with our implementation, we decided to use a VGG16 model architecture. So, we show how our architecture looks in detail and explain all its layers. In the end, we analyze the results of our implementation while using the results itself and while using the results of similar applications as a baseline. 
+As part of our final group project, students shall implement a neural network to reach the best possible accuracy of the CIFAR10 dataset. To fully understand this dataset and the classification problem, we provided a detailed description about the task and its problem. For having a broader understanding of what research contributes to this task of image recognition, we introduce a summary of the latest publications and developments around the image classification field. For our implementation, we decided to use a VGG16 model architecture. We sgo into detail about our model architecture and explain all of its components and corresponding layers. In the end we analyze the results of our training process and compare it with similar implementation and the state-of-the-art models. 
 \end{abstract}
 
 % === KEYWORDS 
@@ -52,23 +52,43 @@ We try to learn how the task image classification could be solved. To work on su
 % === I. Problem description ============================
 \section{Problem Description}
 \label{sec:problemDescription}
-\IEEEPARstart{T}{}In our course Machine Learning at the City University of Hong Kong, Dr Kede teched us the fundamental mathematical knowledge to solve machine learning tasks. Furthermore, we improved our ability to use this knowledge while working on Jupyter Notebook Tutorials, which were provided by Dr Kede and his assistant PhD students. To proof our learning progress in the theoretical and practical field, we are going to work on a Group Project. To solve an image classification task, we use the widely used dataset  "cifar10" \cite{echersly}\cite{mostpopular}. The original dataset consists of 60000 coloured images of objects from 10 classes, with 6000 images per category. There are 50, 000 training images and 10, 000 test images. To compare our work with other groups, we are using the following evaluation criteria:
+\IEEEPARstart{T}{}In our course Machine Learning at the City University of Hong Kong, Dr Kede teached us the fundamental mathematical knowledge to solve machine learning tasks. Furthermore, we improved our ability to use this knowledge while working on Jupyter- Notebook tutorials, which were provided by Dr Kede and his assistant PhD students. To proof our learning progress in the theoretical and practical field, we are working on a group project. To solve an image classification task, we use the widely used dataset  "CIFAR10" \cite{echersly}\cite{mostpopular}. The original dataset consists of 60000 coloured images of objects from 10 classes, with 6000 images per category. There are 50, 000 training images and 10, 000 test images. To compare our work with other groups, we are using the following evaluation criteria:
 \begin{equation}
 Acc(f,D) = \frac{1}{m}\sum_{m}^{i=1} \mathbb{I} \left [ y^{(i)} =f(x^{()i)})\right ]
 \label{acc}
 \end{equation}
 
-\noindent We can choose the Tensorflow Framework from Google and the Facebook pendant Pytorch. To have a quick start, we got two tutorials which are focusing on bothe frameworks and how to use them while solving an image classification task. Because of the broader Community and after a first evaluation based on the provided evaluation criteria, the group decided to use Tensorflow instead of Pytorch.
+\begin{figure}
+  \begin{center}
+  \includegraphics[width=3.5in]{photo/image32.png}\\
+  \caption{CIFAR10 dataset}\label{cifar10}
+  \end{center}
+\end{figure}
+
+
+\noindent When working with the Python programming language, the three most commonly used frameworks are Keras, PyTorch and Tensorflow. Keras itself is based on tensorflow and hence it is easier to use, but does not provide to full capacity of the entire tensorflow framework. Recently Tensorflow 2.0 got released, so we decided in favor of that and chose Keras, because it impacts the performance of Keras itself too. 
 % === II. Literature Survey ============================
 \section{Literature Survey}
-\noindent As mentioned in our \hyperref[sec:problemDescription]{"Problem Desciption"}, used as a training example for an image recognition task, Cifar10 is quite popular. In the online paper archive of the Cornell Univerity, we found 336 publications as we searched for the term "cifar10" \footnote{\href{https://paperswithcode.com/sota/image-classification-on-cifar-10}{https://paperswithcode.com/sota/image-classification-on-cifar-10}}. Besides the publications using cifar10, you could notice a couple of rankings. The rankings are mostly referring to the overall test accuracy or the total loss \cite{echersly}. For simplification, we are relating to the classification of web page "paperswithcode.com" \footnote{\href{http://arxiv.org/}{http://arxiv.org/}}. We can't focus on each of those papers, publications, architectures and rankings which are using the cifar10 as a baseline. In the following, we gave a closer look at the most important publications. Important means,  publications which provide a model which is under the most successful architectures. More precisely, architectures for solving the image classification task with the cifar10 job.
+\noindent As mentioned in our \hyperref[sec:problemDescription]{"Problem Desciption"}, for an image recognition task the CIFAR10 dataset is quite popular. The archive of the Cornell Univerity provides a huge amount of papers regarding the latest machine learning research. We found 336 publications as we searched for the term "CIFAR10" . There are two independent and well known websites \footnote{\href{https://paperswithcode.com/sota/image-classification-on-cifar-10}{https://paperswithcode.com/sota/image-classification-on-cifar-10}} \footnote{\href{https://benchmarks.ai/cifar-10}{https://benchmarks.ai/cifar-10}} which rank annually the most recent performances for the image classifcation task on CIFAR10. The rankings are mostly referring to the overall test accuracy or the total loss \cite{echersly}. For simplification, we are relating to the classification of the web page "paperswithcode.com" \footnote{\href{http://arxiv.org/}{http://arxiv.org/}}. In the following we shortly introduce some of the most successful architectures which are at the top of the leaderboard. \\
+
+\begin{figure}
+  \begin{center}
+  \includegraphics[width=3.5in]{photo/related_work.png}\\
+  \caption{CIFAR10 Leaderboard Top 5, 2019.12.13}\label{leaderboard}
+  \end{center}
+\end{figure}
+
 \subsection{GPipe}
-While in smaller experiments, the training processes of a model is quite small, the time for computing the weights is increasing with an increase in size and complexity\cite{Yao2017ComplexityVP}.\\
-Researchers from Google implemented a machine learning library which offers parallelization for the training process of a machine learning model. GPipe uses mini-batch gradient descent and pipeline parallelism. The goal is that \(k\) accelerators can calculate a defined part of the model \(k\). If we could split our model into \(k\)  parts, we could scale the training process even higher \cite{GPipe}. That leads to an outstanding performance in machine learning tasks as image recognition\cite{perfGPipe}. While using real code examples the research team could verify their work. They reached an accuracy in an image classification task using the dataset cifar10 from 99\% \cite{GPipe}. 
+In smaller experiments the training process for a model is relatively fast, whereas the training process for a model with an upscaled complexity consumes dramatically more time.
+\cite{Yao2017ComplexityVP}.\\
+Researchers at Google implemented a machine learning library which offers parallelization for the training process of a machine learning model. The GPipe uses mini-batch gradient descent and pipeline parallelism. The goal is that \(k\) accelerators can calculate a defined part of the model \(k\). If we can split our model into \(k\)  parts, we are able to scale the training process even higher \cite{GPipe}. This leads to an outstanding performance boost in machine learning tasks, such as image recognition\cite{perfGPipe}. The researchers could verify their work by using real word datasets like the CIFAR10. They reached an accuracy of 99\% \cite{GPipe} with this dataset. 
 \subsection{EfficientNet}
-While we could use the GPipe for parallelisation of the training task while we had a complicated and colossal model, EfficientNet is trying to get the same results in a more efficient process\cite{EfficientNet} . So instead of using more resources, they providing a super-efficient method to get better or similar results while using fewer resources with neural networks which are already used.\cite{EfficientNet} For example, they could increase the accuracy from the ResNet up to 10\% almost without using extra resources.
-\subsection{PyramidNet+ShakeDrop}
-\subsection{WRN-28-10 + SWA}
+While we could use the GPipe for running our complicated and colossal model parallel, EfficientNet trys to get the same result in a more efficient way\cite{EfficientNet} . So, instead of using more resources, they introduce the idea of a super-efficient method to reach better or similar results for using fewer resources with already existing neural network architectures\cite{EfficientNet}. For example, they increased the accuracy of the ResNet up to 10\% with almost not using any extra resources.
+\subsection{PyramidNet}
+In many modern CNN architectures, the feature map dimensions are not increased until they are confronted with a downsampling layer.
+The key idea of the PyramidNet was introduced in the working paper \textit{Deep Pyramidal Residual Networks} \cite{lim2019fast}. This architecture concentrats on the feature
+map dimensions, in particular it increases the dimensions gradually instead of increasing them sharply at each residual unit with a downsampling task. Additionally, this network architecture is a mixture of both plain and residual networks \cite{lim2019fast}. The team also introduced a \textit{novel residual unit} which can improve the performance of an ResNet architecture even more dramatically. 
+In conclusion is the PyramidNet outperforming the normal ResNet and the DenseNet \cite{lim2019fast}.
 %
 % === III. Technical Details ============================
 %
@@ -76,15 +96,23 @@ While we could use the GPipe for parallelisation of the training task while we h
 \label{sec:techDetails}
 \subsection{Preprocessing}
 \subsubsection{Data Augmentation}
-\noindent Data augmentation describes the method of creating new data points by transforming the original data. If we look at images, this can be done for example by resizing, rotating, shifting, flipping and more.
+\noindent Data augmentation describes the method of creating new data points by transforming the original data. If we look at images, this can be proceeded for example by resizing, rotating, shifting, flipping and more.
 With this process we can artificially increase the amount of data, eventhough we have limited access to only 50000 training data. 
-This leads to a improved performance for our VGG model. \\
+This leads to an improved performance for our VGG model. \\
 We use the \textit{ImageDataGenerator class} built-in function from Keras itself to perform this transformations. \\
 
 \subsubsection{Normalization}
-\noindent The goal of normalization is to make every datapoint have the same scale so each feature is equally important. There are many possible ways to scale data e.g. MinMax-Scaling or Z-Score and all of them follow certain purposes. 
+\noindent The goal of normalization is to scale every datapoint in such a way, that outliners cannot harm the rest of the datapoints. There are many possible ways to scale data e.g. MinMax-Scaling or Z-Score and all of them follow certain purposes. 
 The MinMax-Scaling suffers from the so called \textit{outlier issue}.
 We decided to choose the Z-Scoring, because the Z-score normalization is a strategy of normalizing data that avoids this outlier issue \cite{RN6}. \\
+\begin{figure}
+  \begin{center}
+  \includegraphics[width=3.5in]{photo/z-score.png}\\
+  \caption{Z-Scoring}\label{zscore}
+  \end{center}
+\end{figure}
+The Z-scoring \(\frac{value - \mu}{\sigma}\) transforms example data as shown in the figure \ref{zscore} \footnote{\href{https://www.codecademy.com/articles/normalization}{https://www.codecademy.com/articles/normalization}}.
+
 
 \subsubsection{Categorical Output}
 \noindent As the name of CIFAR10 already implies, does this dataset contain of ten different classes. There are ten different animals given by the creators of this dataset. To predict one of those animals with the trained model, the model outputs ten different values, each represents the probability of being one of the animals respectively. 
@@ -92,12 +120,21 @@ We convert the aranged numbers from one to ten 50000, 1) into a binary output cl
 If we didn't convert our labels into this format, we could not resolve back the probability for each animal and would lose information to improve. \\
 
 \subsection{Model}
-\noindent To solve the image classification task, we are using a convolutional neuronal network (CNN). CNN's are a particular case of feed-forward neural networks \cite{Goodfellow-et-al-2016}. On a very fundamental level, we can say that a feed-forward neural network -as the most machine learning models - is a function. The function of a feed-forward neuronal network can simply descriped as \(y = f(x, \o )\) . CNN's and feed-forward neuronal networks are estimating parameter values. So for \(y = f(x, \o )\) we estimate the parameter \(\o \) \cite{Goodfellow-et-al-2016}. Through those estimated parameter values, we are getting a function with the smallest possible difference between the predicted output values and the defined output values. A function that measures the difference between the expected - and the defined output is a so-called loss function \cite{Goodfellow-et-al-2016}. The problem description gives already a mathematical definition \eqref{acc} from the accuracy loss function which we are using. 
-CNN's and classical feed-forward neuronal networks differ in their basis of calculation. Feed-forward neuronal networks are using matrix multiplication, whereas CNN's are using convolutions. Convolutional layers, pooling layers, and fully-connected layers are specific for a CNN \cite{LeCun1998}. \\
+\noindent To solve the image classification task, we are using a convolutional neuronal network (CNN). CNN's are a particular case of feed-forward neural networks \cite{Goodfellow-et-al-2016}. On a very fundamental level, we can say that a feed-forward neural network - as the most machine learning models - is a function. The function of a feed-forward neural network can simply be descriped as \(y = f(x, \o )\) . CNN's and feed-forward neural networks are estimating parameter values. So for \(y = f(x, \o )\) we estimate the parameter \(\o \) \cite{Goodfellow-et-al-2016}. Through those estimated parameter values we are receiving a function back with the smallest possible difference between the predicted output values and the defined output values. A function that measures the difference between the expected - and the defined output is a so - called loss function \cite{Goodfellow-et-al-2016}. The problem description gives already a mathematical definition \eqref{acc} from the accuracy loss function which is used by us. 
+CNN's and classical feed-forward neuronal networks differ in their basis of calculation. Feed-forward neural networks are using matrix multiplication, whereas CNN's are using convolutions. Convolutional layers, pooling layers, and fully-connected layers are specific layers for a CNN \cite{LeCun1998}. \\
 \subsubsection{Model Architecture}
-We decided to use the VGG16 model architecture. In 2014 an implementation of the architecture could win ILSVR(Imagenet) competition. Even if in the overall cifar10 ranking are more powerfull architectures and architecture combinations, we decided to use this classic example.  The complexity is small in comparison to  other designs which are provided in the ranking. Note that - as  mentioned in the \hyperref[sec:problemDescription]{"Problem Desciption"}, the goal of our project was not to get an outstanding result of the accuracy. The main goal was more to understand the principals behind deep learning and to get a feeling of what the state of the art (in image recognition) is. So, because the VGG16 is known as the best visualizable model architecture, we thought it would be the best choice to accomplish our goal. The model architecture is also known for getting rid of a vast amount of hyper-parameters. Instead, it is focusing on tiny filter size and a small strate. The technical details \hyperref[sec:techDetails]{"Problem Desciption"}, of the different layers are providing more details about its implementaiton. 
+We decided to use the VGG16 model architecture. In 2014, an implementation of the architecture won the ILSVR(Imagenet) competition. As we could already see in figure \ref{leaderboard} that there are quite impressive results, we still decided to use this classic example. The complexity is rather small in comparison to other designs which are provided in the ranking. Note that - as  mentioned in the \hyperref[sec:problemDescription]{"Problem Desciption"}, the goal of our project was not to get an outstanding result of the accuracy. The main goal was  to understand the principals behind deep learning and to get a feeling of what the state of the art (in image recognition) is. So, because the VGG16 is known as the best visualizable model architecture, we thought it would be the best choice to accomplish our goal in this way. The model architecture is also known for getting rid of a vast amount of hyper-parameters. Instead, it is focusing on tiny filter size and a small strate. The technical details \hyperref[sec:techDetails]{"Problem Desciption"}, of the different layers are providing more details about its implementaiton. 
 \subsubsection{Convolutional Layers}
-\noindent The convolutional Layer is for extracting features from the input matrix into a feature map. For this procedure, we use matrix multiplication and a filter (feature detector, kernel) \cite{Goodfellow-et-al-2016}. In picture 9 you can see a calculation example of how convolution is applied to a matrix. We are iterating with the filter over the matrix, calculating the scalar product and writing the result into a feature map. An activation function like the rectified linear unit (Relu) normalizes the feature map after we did the convolution.  Normalization grantees a feature map which is not a linear transformation of its input value. If that would be the case we had just a linear problem what would be easily solved but with a wrong result. In other words, the input values get just multiplied by coefficients. Note that there are plenty of reasons for activation functions in a neuronal network. We are giving a closer look at this topic at our section \hyperref[sec:activationFunctions]{"Activation Functions"}. In Figure 8 you can see how our pictures had changed after applying the first convolutional layer, before and after doing normalization.  \\
+\noindent The convolutional Layer performs the extracting of features from the input matrix into a feature map. For this procedure, we use matrix multiplication in form of the dot product and a filter (feature detector, kernel) \cite{Goodfellow-et-al-2016}. 
+
+\begin{figure}
+  \begin{center}
+  \includegraphics[width=3in]{photo/cnn.png}\\
+  \caption{Feature Map derived from http://deeplearning.stanford.edu}\label{featuremap}
+  \end{center}
+\end{figure}
+
+In picture \ref{featuremap} you can see a calculation example of how convolution is applied to a matrix. We are iterating with the filter over the matrix, calculating the scalar product and writing the result into a feature map. An activation function like the rectified linear unit (ReLU) normalizes the feature map after we performed the convolution. Normalization guarantees a feature map which is not a linear transformation of its input value. If this is the case, we only have a linear problem which can be easily solved, but with a wrong result. In other words, the input values get just multiplied by coefficients. Note that there are plenty of reasons for activation functions in a neuronal network. We are giving a closer look at this topic at our section \hyperref[sec:activationFunctions]{"Activation Functions"}. In Figure 8 you can see how our pictures had changed after applying the first convolutional layer, before and after doing normalization.  \\
 \subsubsection{Pooling Layers}
 \noindent It is common to periodically add a pooling layer in-between the convolutional layers. Its function is to avoid overfitting and step by step reduce the size of the input image by reducing the amount of parameters and computations of the network. We use three pooling layers with filters of size 3x3 applied with a stride of 0 and a padding set to \textit{same}. This downsamples every depth slice in the input by 2 along both width and height, discarding 50\% of the activations. \\
 \subsubsection{Fully-Connected Layers}
