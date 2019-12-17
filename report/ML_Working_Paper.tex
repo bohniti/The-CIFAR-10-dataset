@@ -212,7 +212,13 @@ The best solution for us was to use a server from the Amazon Web Services (AWS).
 The AMI Server from Amazon gets shipped with multiple python environments which can be activated manually. We chose the \textit{p36 Tensorflow Kernel} to activate the neccessary packages.
 Under this setting our model needs approximately only 3~4 hours to be trained. \\ 
 \subsection{Model Analysis}
-Besides the difficulties we had, if we would consider improving our accuracy with the VGGNet, we could say that our model does a good job due to overfitting as you can see in Figure XYZ. This achievement is mostly because of our attempted to avoid overfitting while using a weight decay, kernel regularizer and batch normalization. The figure XYZ furthermore shows, that no matter how many more epochs we train, the accuracy will not further increase. Other VGG networks reach similar results, no matter if it is VGG13, VGG16 or VGG19 \cite{RN16}. All of the VGG networks have their limit at around 92~94\% \cite{RN17}.
+\begin{figure}
+  \begin{center}
+  \includegraphics[width=3in]{photo/accuracy.png}\\
+  \caption{Accuracy  Plot}\label{acc}
+  \end{center}
+\end{figure}
+Besides the difficulties we had, if we would consider improving our accuracy with the VGGNet, we could say that our model does a good job due to overfitting as you can see in Figure \ref{acc}. This achievement is mostly because of our attempted to avoid overfitting while using a weight decay, kernel regularizer and batch normalization. The figure \ref{acc} furthermore shows, that no matter how many more epochs we train, the accuracy will not further increase. Other VGG networks reach similar results, no matter if it is VGG13, VGG16 or VGG19 \cite{RN16}. All of the VGG networks have their limit at around 92~94\% \cite{RN17}.
 
 % ============================================
 \ifCLASSOPTIONcaptionsoff
