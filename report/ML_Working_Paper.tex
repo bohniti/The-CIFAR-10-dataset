@@ -39,7 +39,7 @@ Machine Learning CS4487
 % === ABSTRACT 
 \begin{abstract}
 %\boldmath
-As part of our final group project, students shall implement a neural network to reach the best possible accuracy of the CIFAR10 dataset. To fully understand this dataset and the classification problem, we provided a detailed description about the task and its problem. For having a broader understanding of what research contributes to this task of image recognition, we introduce a summary of the latest publications and developments around the image classification field. For our implementation, we decided to use a VGG16 model architecture. We sgo into detail about our model architecture and explain all of its components and corresponding layers. In the end we analyze the results of our training process and compare it with similar implementation and the state-of-the-art models. 
+As part of our final group project, students shall implement a neural network to gain a better understanding of machine learning in practise. To achieve our goal, we try to get the best possible accuracy. To fully understand this dataset and the classification problem, we provided a detailed description about the task and its problems. For having a broader understanding of what research contributes to this task of image recognition, we introduce a summary of the latest publications and developments around the image classification field. For our implementation, we decided to use a VGG16 model architecture. We go into detail about our model architecture and explain all of its components and corresponding layers. In the end we analyse the results of our training process and compare it with similar implementation and the state-of-the-art models. 
 \end{abstract}
 
 % === KEYWORDS 
@@ -52,21 +52,18 @@ As part of our final group project, students shall implement a neural network to
 % === I. Problem description ============================
 \section{Problem Description}
 \label{sec:problemDescription}
-\IEEEPARstart{T}{}In our course Machine Learning at the City University of Hong Kong, Dr Kede teached us the fundamental mathematical knowledge to solve machine learning tasks. Furthermore, we improved our ability to use this knowledge while working on Jupyter- Notebook tutorials, which were provided by Dr Kede and his assistant PhD students. To proof our learning progress in the theoretical and practical field, we are working on a group project. To solve an image classification task, we use the widely used dataset  "CIFAR10" \cite{echersly}\cite{mostpopular}. The original dataset consists of 60000 coloured images of objects from 10 classes, with 6000 images per category. There are 50, 000 training images and 10, 000 test images. To compare our work with other groups, we are using the following evaluation criteria:
+\IEEEPARstart{I}{}n our course Machine Learning at the City University of Hong Kong, Dr Kede teached us the fundamental mathematical knowledge to solve machine learning tasks. Furthermore, we improved our ability to use this knowledge while working on Jupyter Notebook tutorials, which were provided by Dr Kede and his assistant PhD students. To proof our learning progress in the theoretical and practical field, we are working on a group project. To solve an image classification task, we use the widely used dataset  "CIFAR10" \cite{echersly}\cite{mostpopular}. The original dataset consists of 60000 coloured images of objects from 10 classes, with 6000 images per category. There are 50, 000 training images and 10, 000 test images. To compare our work with other groups, we are using the following evaluation criteria:
 \begin{equation}
 Acc(f,D) = \frac{1}{m}\sum_{m}^{i=1} \mathbb{I} \left [ y^{(i)} =f(x^{()i)})\right ]
 \label{acc}
 \end{equation}
-
 \begin{figure}
   \begin{center}
   \includegraphics[width=3.5in]{photo/image32.png}\\
   \caption{CIFAR10 dataset}\label{cifar10}
   \end{center}
 \end{figure}
-
-
-\noindent When working with the Python programming language, the three most commonly used frameworks are Keras, PyTorch and Tensorflow. Keras itself is based on tensorflow and hence it is easier to use, but does not provide to full capacity of the entire tensorflow framework. Recently Tensorflow 2.0 got released, so we decided in favor of that and chose Keras, because it impacts the performance of Keras itself too. 
+\noindent When working on machine learning tasks with the Python programming language, the three most commonly used frameworks are Keras, PyTorch and Tensorflow \cite{favFrameworks}. Keras itself is based on tensorflow and hence it is easier to use, but does not provide to full capacity of the entire tensorflow framework\cite{DlKeras}. Recently Tensorflow 2.0 got released, so we decided in favor of that and chose Keras, because it impacts the performance of Keras itself too. 
 % === II. Literature Survey ============================
 \section{Literature Survey}
 \noindent As mentioned in our \hyperref[sec:problemDescription]{"Problem Desciption"}, for an image recognition task the CIFAR10 dataset is quite popular. The archive of the Cornell Univerity provides a huge amount of papers regarding the latest machine learning research. We found 336 publications as we searched for the term "CIFAR10" . There are two independent and well known websites \footnote{\href{https://paperswithcode.com/sota/image-classification-on-cifar-10}{https://paperswithcode.com/sota/image-classification-on-cifar-10}} \footnote{\href{https://benchmarks.ai/cifar-10}{https://benchmarks.ai/cifar-10}} which rank annually the most recent performances for the image classifcation task on CIFAR10. The rankings are mostly referring to the overall test accuracy or the total loss \cite{echersly}. For simplification, we are relating to the classification of the web page "paperswithcode.com" \footnote{\href{http://arxiv.org/}{http://arxiv.org/}}. In the following we shortly introduce some of the most successful architectures which are at the top of the leaderboard. \\
