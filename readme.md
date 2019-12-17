@@ -7,7 +7,7 @@
 
 ## Abstract
 
-Comming soon ...
+As part of our final group project, students shall implement a neural network to reach the best possible accuracy of the CIFAR10 dataset. To fully understand this dataset and the classification problem, we provided a detailed description about the task and its problem. For having a broader understanding of what research contributes to this task of image recognition, we introduce a summary of the latest publications and developments around the image classification field. For our implementation, we decided to use a VGG16 model architecture. We sgo into detail about our model architecture and explain all of its components and corresponding layers. In the end we analyze the results of our training process and compare it with similar implementation and the state-of-the-art models. 
 
 ## Getting Started
 
@@ -19,8 +19,8 @@ git clone https://github.com/bohniti/cifar-10.git
 
 ### Prerequisites
 
-- Of course you need git to get the source
-- If you want to compile the report by yourself you need a LaTex Compiler for your OS and maybe an IDE which makes things easier
+- You need git to get the source
+- If you want to compile the report by yourself you need a LaTex Compiler for your OS and an IDE which makes things easier
 - If you want to compile, train and play with our Code you need a python working environment. We used Jupyter Notebooks. The requiered packeges you can see in the Notebooks itself.
 
 ### Run the Notebook
