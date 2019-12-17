@@ -200,11 +200,13 @@ In between the convolutional layer (CNN) and the fully connected layer (Dense), 
 % === IV. Result Analysis============================
 %
 \section{Result Analysis}
-As mentioned in the model architecture, is an implementation of the VGGNet still state of the art but no longer among the very best of its field. Even more, we want to point out its difficulties and significant problems. As we look at our training process, we could see two things. First, the estimated time of our epochs is around 30 Minutes. So, if we would train longer to gain a better result, our training processes would be too long. Second, our model is enormous.  A massive model in size leads to difficulties if we would consider deploying our model.\\
-
-AWS \\
-
-Besides the difficulties we had, if we would consider improving our accuracy with the VGGNet, we could say that our model does a good job due to overfitting as you can see in Figure XYZ. This achievement is mostly because of our attempted to avoid overfitting while using a weight decay, kernel regularizer and batch normalization. 
+\subsection{Settings}
+As mentioned in the model architecture, our implementation of the VGG16 network is still state of the art, but no longer among the very best of its field. Even more, we want to point out its difficulties and significant problems. As we look at our training process, we could see two things. First, the estimated time of our epochs is around 30 Minutes if we train it on our MacBook without Nvidia graphicscard. So, if we want to train 125 epochs to gain the best possible result without overfitting our model, we would need 62,5 hours. This is obviously too long. \\ One possible way is to translate the \textit{.ipynb} format into \textit{.py} format, because we can then run the model as a background job on a tiny server. The tiny server has a similar training time, but can be trained in the background. 
+The best solution for us was to use a server from the Amazon Web Services (AWS). We rented the \textit{Deep Learning AMI (Amazon Linux 2) Version 26.0} \footnote{\href{https://eu-west-1.console.aws.amazon.com/}{https://eu-west-1.console.aws.amazon.com/}}. On this server we can run the Jupyter Notebook in the background and use the portforward function from the SSH connection to show the user interface (UI) of the jupyter notebook on our Macbooks. In this way we can train the model as learned from the CS4487 lecture. \\
+The AMI Server from Amazon gets shipped with multiple python environments which can be activated manually. We chose the \textit{p36 Tensorflow Kernel} to activate the neccessary packages.
+Under this setting our model needs approximately only 3~4 hours to be trained. \\ 
+\subsection{Model Analysis}
+Besides the difficulties we had, if we would consider improving our accuracy with the VGGNet, we could say that our model does a good job due to overfitting as you can see in Figure XYZ. This achievement is mostly because of our attempted to avoid overfitting while using a weight decay, kernel regularizer and batch normalization. The figure XYZ furthermore shows, that no matter how many more epochs we train, the accuracy will not further increase.
 
 % ============================================
 \ifCLASSOPTIONcaptionsoff
